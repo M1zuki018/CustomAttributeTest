@@ -53,4 +53,7 @@ public class Sample : MonoBehaviour
     {
         Debug.Log("見てくれてありがとうございます！");
     }
+    
+    //指定した値の間でVector2型の最小値(x)と最大値(y)をスライダーで調整できるようにします
+    [MinMaxSlider(1,10)] public Vector2 minMax;
 }
