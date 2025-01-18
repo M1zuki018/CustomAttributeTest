@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// オブジェクトが未割当の場合変数名にマーカーする
 /// </summary>
-[CustomPropertyDrawer(typeof(HighlightIfNullAttribute))]
+[CustomPropertyDrawer(typeof(RequestFieldAttribute))]
 public class RequestFieldEditor : PropertyDrawer
 {
     private static readonly Color ErrorFieldColor = new Color(0.6f, 0, 0);

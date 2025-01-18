@@ -8,10 +8,19 @@ using System.Reflection;
 [CustomEditor(typeof(MonoBehaviour), true)]
 public class ButtonDrawer : Editor
 {
+    //動作を制御するフラグ
+    private static bool isEnabled = false;
+    
     public override void OnInspectorGUI()
     {
-        // デフォルトのプロパティを描画（カスタムプロパティドロワーの干渉を防ぐ）
-        DrawPropertiesExcluding(serializedObject, new string[] { });
+        if (!isEnabled)
+        {
+            DrawDefaultInspector();
+            return;
+        }
+        
+        // デフォルトのプロパティを描画
+        DrawDefaultInspector();
 
         // 現在のターゲットオブジェクトを取得
         MonoBehaviour targetObject = (MonoBehaviour)target;
@@ -34,8 +43,16 @@ public class ButtonDrawer : Editor
                 }
             }
         }
-
-        // 変更を適用
-        serializedObject.ApplyModifiedProperties();
     }
+    
+    /// <summary>
+    /// ButtonDrawerの有効/無効を切り替える
+    /// </summary>
+    [MenuItem("Tools/Toggle ButtonDrawer")]
+    public static void ToggleButtonDrawer()
+    {
+        isEnabled = !isEnabled;
+        Debug.Log($"ButtonDrawerは現在 {(isEnabled ? "有効" : "無効")} です");
+    }
+    
 }
