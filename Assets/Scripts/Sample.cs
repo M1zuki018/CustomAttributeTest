@@ -46,14 +46,21 @@ public class Sample : MonoBehaviour
 
     //特定のコンポーネントを指定して参照します
     [RequireComponentOfType(typeof(Camera))] public GameObject cameraObj;
-
+    
+    //指定した値の間でVector2型の最小値(x)と最大値(y)をスライダーで調整できるようにします
+    //攻撃力の調整や左右移動の制限の調整など
+    [MinMaxSlider(1,10)] public Vector2 minMax;
+    
+    //inspectorからフォルダーを直接指定してパスを取得できるようにします
+    //保存先のフォルダーのパスを簡単に取得したい時などに
+    //[Button]属性と競合しており、フォルダーを選択した時に1つエラーメッセージが出ます（描画順の問題）
+    //無視するかどちらかの属性を使用しないようにしてください
+    [FolderPath] public string folderPath;
+    
     //メソッドをinspectorに表示したボタンから呼び出せるようにします
     [Button]
     public void ButtonOnInspecter()
     {
         Debug.Log("見てくれてありがとうございます！");
-    }
-    
-    //指定した値の間でVector2型の最小値(x)と最大値(y)をスライダーで調整できるようにします
-    [MinMaxSlider(1,10)] public Vector2 minMax;
+    } 
 }
