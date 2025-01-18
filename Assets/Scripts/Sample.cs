@@ -57,10 +57,14 @@ public class Sample : MonoBehaviour
     //無視するかどちらかの属性を使用しないようにしてください
     [FolderPath] public string folderPath;
     
+    //ScriptableObject を Inspector 上で展開して編集できるようにします
+    [Expandable] public SampleSO sampleSO;
+    
     //メソッドをinspectorに表示したボタンから呼び出せるようにします
     [Button]
     public void ButtonOnInspecter()
     {
         Debug.Log("見てくれてありがとうございます！");
     } 
+    
 }
